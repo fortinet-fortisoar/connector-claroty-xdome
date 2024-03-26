@@ -24,7 +24,7 @@ class ClarotyXDOMEConnector:
         self.api_key = config.get('api_key')
         self.verify_ssl = config.get('verify_ssl')
 
-    def make_request(self, endpoint, method='GET', data=None, params=None, files=None):
+    def make_request(self, endpoint, method='POST', data=None, params=None, files=None):
         try:
             url = self.server_url + endpoint
             logger.info('Executing url {}'.format(url))

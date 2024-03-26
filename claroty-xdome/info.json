@@ -173,7 +173,7 @@
             "Acknowledged"
           ],
           "tooltip": "Specify the Alert Status you want to filter Alerts.",
-          "description": "Specify the device type you want to filter Devices. One or more Device type can be provided in a comma separated format."
+          "description": "Specify the Alert Status you want to filter Alerts."
         },
         {
           "title": "Filter By Category",
@@ -337,8 +337,8 @@
             "Level 4",
             "Level 5"
           ],
-          "tooltip": "Specify the device purdue level you want to filter Devices. One or more Purdue levels can be provided in a comma separated format.",
-          "description": "Specify the device purdue level you want to filter Devices. One or more Purdue levels can be provided in a comma separated format."
+          "tooltip": "Specify the Device Purdue level with which you want to filter Devices",
+          "description": "Specify the Device Purdue level with which you want to filter Devices"
         },
         {
           "title": "Filter By Vulnerabilities",
@@ -354,8 +354,8 @@
             "High",
             "Critical"
           ],
-          "tooltip": "Specify the Known Vulnerabilities you want to filter devices. One or more Known Vulnerabilities can be provided in a comma separated format.",
-          "description": "Specify the Known Vulnerabilities you want to filter devices. One or more Known Vulnerabilities can be provided in a comma separated format."
+          "tooltip": "Specify the Known Vulnerabilities you want to filter devices.",
+          "description": "Specify the Known Vulnerabilities you want to filter devices."
         },
         {
           "title": "Filter By Risk Score",
@@ -370,8 +370,8 @@
             "High",
             "Critical"
           ],
-          "tooltip": "Specify the Risk Score you want to filter devices. One or more risk score can be provided in a comma separated format.",
-          "description": "Specify the Risk Score you want to filter devices. One or more risk score can be provided in a comma separated format."
+          "tooltip": "Specify the Risk Score you want to filter devices",
+          "description": "Specify the Risk Score you want to filter devices"
         },
         {
           "title": "Filter By",
@@ -660,8 +660,8 @@
           "editable": true,
           "type": "integer",
           "value": 100,
-          "tooltip": "Specify the maximum amount of Devices to fetch. Default value is 100",
-          "description": "Specify the maximum amount of Devices to fetch. Default value is 100"
+          "tooltip": "Specify the maximum amount of Vulnerabilities to fetch. Default value is 100",
+          "description": "Specify the maximum amount of Vulnerabilities to fetch. Default value is 100"
         },
         {
           "title": "Filter By Vulnerability ID",
@@ -736,8 +736,8 @@
               "order": "desc"
             }
           ],
-          "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"uid\",\"order\":\"asc\"}]",
-          "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"uid\",\"order\":\"asc\"}]"
+          "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is  {\n\"field\": \"published_date\",\n \"order\": \"desc\"\n}",
+          "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is  {\n\"field\": \"published_date\",\n \"order\": \"desc\"\n}"
         }
       ]
     },
