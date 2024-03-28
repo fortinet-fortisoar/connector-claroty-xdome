@@ -1,0 +1,777 @@
+{
+  "name": "claroty-xdome",
+  "label": "Claroty XDOME",
+  "version": "1.0.0",
+  "description": "Claroty xDome is a modular, SaaS-powered industrial cybersecurity platform that scales to protect your environment and fulfill your goals as they evolve.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "ingestion_supported": true,
+  "ingestion_modes": [
+    "scheduled"
+  ],
+  "category": "OT & IoT Security",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "value": "https://api.claroty.com",
+        "tooltip": "Specify the IP address or hostname of the Claroty XDOME to which you will connect and perform automated operations.",
+        "description": "Specify the IP address or hostname of the Claroty XDOME to which you will connect and perform automated operations."
+      },
+      {
+        "title": "API Token",
+        "type": "password",
+        "name": "api_key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "tooltip": "Specify the Bearer Token of your Claroty XDOME setup. To create an API user from Admin Settings > User Management, and generate an API token",
+        "description": "Specify the Bearer Token of your Claroty XDOME setup. To create an API user from Admin Settings > User Management, and generate an API token"
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true,
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_alerts",
+      "title": "Get Alerts",
+      "description": "Retrieves the details of alerts corresponding to the Alerts table in the Claroty XDOME dashboard.",
+      "category": "investigation",
+      "annotation": "get_alerts",
+      "enabled": true,
+      "output_schema": {
+        "alerts": [
+          {
+            "id": "",
+            "alert_type_name": "",
+            "category": "",
+            "detected_time": "",
+            "updated_time": "",
+            "devices_count": "",
+            "unresolved_devices_count": "",
+            "medical_devices_count": "",
+            "iot_devices_count": "",
+            "it_devices_count": "",
+            "ot_devices_count": "",
+            "alert_name": "",
+            "alert_class": "",
+            "status": ""
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "Fields",
+          "name": "fields",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "json",
+          "value": {
+            "fields": [
+              "id",
+              "alert_name",
+              "alert_type_name",
+              "alert_class",
+              "category",
+              "detected_time",
+              "updated_time",
+              "devices_count",
+              "unresolved_devices_count",
+              "medical_devices_count",
+              "iot_devices_count",
+              "it_devices_count",
+              "ot_devices_count",
+              "status",
+              "malicious_ip_tags_list"
+            ]
+          },
+          "tooltip": "Specify which fields to return for each Alert.",
+          "description": "Specify which fields to return for each Alert."
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": 0,
+          "type": "integer",
+          "tooltip": "Specify the initial index of page from where to retrieve the Alerts. Default value is 0",
+          "description": "Specify the initial index of page from where to retrieve the Alerts. Default value is 0"
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "value": 100,
+          "tooltip": "Specify the maximum amount of Alerts to fetch. Default value is 100",
+          "description": "Specify the maximum amount of Alerts to fetch. Default value is 100"
+        },
+        {
+          "title": "Before Detected Time",
+          "name": "before_detected_time",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "datetime",
+          "tooltip": "Specify the time on which Alerts detected before that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z",
+          "description": "Specify the time on which Alerts detected before that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z"
+        },
+        {
+          "title": "After Detected Time",
+          "name": "after_detected_time",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "datetime",
+          "tooltip": "Specify the time on which Alerts detected after that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z",
+          "description": "Specify the time on which Alerts detected after that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z"
+        },
+        {
+          "title": "Filter By IDs",
+          "name": "id",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Alert ID you want to filter Alerts. One or more ID can be provided in a comma separated format.",
+          "description": "Specify the Alert ID you want to filter Alerts. One or more ID can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter By Status",
+          "name": "status",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Unresolved",
+            "Resolved",
+            "Acknowledged"
+          ],
+          "tooltip": "Specify the Alert Status you want to filter Alerts.",
+          "description": "Specify the Alert Status you want to filter Alerts."
+        },
+        {
+          "title": "Filter By Category",
+          "name": "category",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Alert category you want to filter Alerts. One or more category can be provided in a comma separated format.",
+          "description": "Specify the Alert category you want to filter Alerts. One or more category can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter By",
+          "name": "filter_by",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "tooltip": "Specify the Filter query to filter the results, It can be a simple filter on a single field, or a combination of several filters for more complex logic. Ex: {\n\n    \"field\": \"medical_devices_count\",\n    \"operation\": \"greater\",\n    \"value\": 10\n\n}",
+          "description": "Specify the Filter query to filter the results, It can be a simple filter on a single field, or a combination of several filters for more complex logic. Ex: {\n\n    \"field\": \"medical_devices_count\",\n    \"operation\": \"greater\",\n    \"value\": 10\n\n}"
+        },
+        {
+          "title": "Sort By",
+          "name": "sort_by",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "value": [
+            {
+              "field": "id",
+              "order": "asc"
+            }
+          ],
+          "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"id\",\"order\":\"asc\"}]",
+          "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"id\",\"order\":\"asc\"}]"
+        }
+      ]
+    },
+    {
+      "operation": "get_devices",
+      "title": "Get Devices",
+      "description": "Retrieves the details of Devices corresponding to the Devices table in the Claroty XDOME dashboard.",
+      "category": "investigation",
+      "annotation": "get_devices",
+      "enabled": true,
+      "output_schema": {
+        "devices": [
+          {
+            "uid": "",
+            "model": "",
+            "ip_list": [],
+            "asset_id": "",
+            "mac_list": [],
+            "device_type": "",
+            "network_list": [],
+            "device_category": "",
+            "device_subcategory": "",
+            "device_type_family": ""
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "Fields",
+          "name": "fields",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "json",
+          "value": {
+            "fields": [
+              "network_list",
+              "device_category",
+              "device_subcategory",
+              "device_type",
+              "uid",
+              "asset_id",
+              "mac_list",
+              "ip_list",
+              "device_type_family",
+              "model"
+            ]
+          },
+          "tooltip": "Specify which fields to return for each Device.",
+          "description": "Specify which fields to return for each Device."
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": 0,
+          "type": "integer",
+          "tooltip": "Specify the initial index of page from where to retrieve the Devices. Default value is 0",
+          "description": "Specify the initial index of page from where to retrieve the Devices. Default value is 0"
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "value": 100,
+          "tooltip": "Specify the maximum amount of Devices to fetch. Default value is 100",
+          "description": "Specify the maximum amount of Devices to fetch. Default value is 100"
+        },
+        {
+          "title": "Filter By Device Type",
+          "name": "device_type",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the device type you want to filter Devices. One or more Device type can be provided in a comma separated format.",
+          "description": "Specify the device type you want to filter Devices. One or more Device type can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter By MAC OUI",
+          "name": "mac_oui_list",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the vendor of the device's NIC (according to the OUI MAC) you want to filter Devices. One or more MAC OUIs can be provided in a comma separated format.",
+          "description": "Specify the vendor of the device's NIC (according to the OUI MAC) you want to filter Devices. One or more MAC OUIs can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter By Model",
+          "name": "model",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the device model you want to filter Devices. One or more Device model can be provided in a comma separated format.",
+          "description": "Specify the device model you want to filter Devices. One or more Device model can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter By Software/Firmware Version",
+          "name": "software_or_firmware_version",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the device software or firmware version you want to filter Devices. One or more Device software or firmware version can be provided in a comma separated format. Note: All Versions should be in captial Ex V5.1.3",
+          "description": "Specify the device software or firmware version you want to filter Devices. One or more Device software or firmware version can be provided in a comma separated format. Note: All Versions should be in captial Ex V5.1.3"
+        },
+        {
+          "title": "Filter By Purdue Level",
+          "name": "purdue_level",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "multiselect",
+          "options": [
+            "Level 1",
+            "Level 2",
+            "Level 3",
+            "Level 4",
+            "Level 5"
+          ],
+          "tooltip": "Specify the Device Purdue level with which you want to filter Devices",
+          "description": "Specify the Device Purdue level with which you want to filter Devices"
+        },
+        {
+          "title": "Filter By Vulnerabilities",
+          "name": "known_vulnerabilities",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "multiselect",
+          "options": [
+            "Very Low",
+            "Low",
+            "Medium",
+            "High",
+            "Critical"
+          ],
+          "tooltip": "Specify the Known Vulnerabilities you want to filter devices.",
+          "description": "Specify the Known Vulnerabilities you want to filter devices."
+        },
+        {
+          "title": "Filter By Risk Score",
+          "name": "risk_score",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "multiselect",
+          "options": [
+            "Low",
+            "Medium",
+            "High",
+            "Critical"
+          ],
+          "tooltip": "Specify the Risk Score you want to filter devices",
+          "description": "Specify the Risk Score you want to filter devices"
+        },
+        {
+          "title": "Filter By",
+          "name": "filter_by",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "tooltip": "Specify the Filter query to filter the results, It can be a simple filter on a single field, or a combination of several filters for more complex logic. Ex: {\n\n    \"field\": \"medical_devices_count\",\n    \"operation\": \"greater\",\n    \"value\": 10\n\n}",
+          "description": "Specify the Filter query to filter the results, It can be a simple filter on a single field, or a combination of several filters for more complex logic. Ex: {\n\n    \"field\": \"medical_devices_count\",\n    \"operation\": \"greater\",\n    \"value\": 10\n\n}"
+        },
+        {
+          "title": "Sort By",
+          "name": "sort_by",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "value": [
+            {
+              "field": "uid",
+              "order": "asc"
+            }
+          ],
+          "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"uid\",\"order\":\"asc\"}]",
+          "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"uid\",\"order\":\"asc\"}]"
+        }
+      ]
+    },
+    {
+      "operation": "get_ot_events",
+      "title": "Get OT Activity Events",
+      "description": "Retrieves the details of OT events corresponding to the events table in the OT Activity page in the Claroty XDOME dashboard.",
+      "category": "investigation",
+      "annotation": "get_ot_events",
+      "enabled": true,
+      "output_schema": {
+        "ot_activity_events": [
+          {
+            "mode": "",
+            "dest_ip": "",
+            "event_id": "",
+            "protocol": "",
+            "dest_port": "",
+            "source_ip": "",
+            "event_type": "",
+            "description": "",
+            "ip_protocol": "",
+            "source_port": "",
+            "dest_asset_id": "",
+            "detection_time": "",
+            "source_asset_id": "",
+            "source_username": "",
+            "dest_device_type": "",
+            "related_alert_ids": [],
+            "source_device_type": ""
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "Fields",
+          "name": "fields",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "json",
+          "value": {
+            "fields": [
+              "detection_time",
+              "event_type",
+              "related_alert_ids",
+              "description",
+              "dest_asset_id",
+              "dest_ip",
+              "dest_device_type",
+              "protocol",
+              "dest_port",
+              "source_port",
+              "source_asset_id",
+              "source_ip",
+              "source_device_type",
+              "source_username",
+              "mode",
+              "event_id",
+              "ip_protocol"
+            ]
+          },
+          "tooltip": "Specify which fields to return for each OT Event.",
+          "description": "Specify which fields to return for each OT Event."
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the initial index of page from where to retrieve the OT Events. Default value is 0",
+          "description": "Specify the initial index of page from where to retrieve the OT Events. Default value is 0"
+        },
+        {
+          "title": "Filter by OT Event ID",
+          "name": "event_id",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Event ID you want to filter OT Events. One or more Event ID can be provided in a comma separated format.",
+          "description": "Specify the Event ID you want to filter OT Events. One or more Event ID can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter by OT Event Type",
+          "name": "event_type",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Event type you want to filter OT Events. One or more Event type can be provided in a comma separated format.",
+          "description": "Specify the Event type you want to filter OT Events. One or more Event type can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter by Destination Asset ID",
+          "name": "dest_asset_id",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the  Destination Asset ID on which you want to filter OT Events. One or more Destination Asset ID can be provided in a comma separated format.",
+          "description": "Specify the  Destination Asset ID on which you want to filter OT Events. One or more Destination Asset ID can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter by Source Asset ID",
+          "name": "source_asset_id",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Source Asset ID you want to filter OT Events. One or more Source Asset ID can be provided in a comma separated format.",
+          "description": "Specify the Source Asset ID you want to filter OT Events. One or more Source Asset ID can be provided in a comma separated format."
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "value": 100,
+          "tooltip": "Specify the maximum amount of OT Events to fetch. Default value is 100",
+          "description": "Specify the maximum amount of OT Events to fetch. Default value is 100"
+        },
+        {
+          "title": "Filter By",
+          "name": "filter_by",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "tooltip": "Specify the Filter query to filter the results, It can be a simple filter on a single field, or a combination of several filters for more complex logic. Ex: {\n\n    \"field\": \"medical_devices_count\",\n    \"operation\": \"greater\",\n    \"value\": 10\n\n}",
+          "description": "Specify the Filter query to filter the results, It can be a simple filter on a single field, or a combination of several filters for more complex logic. Ex: {\n\n    \"field\": \"medical_devices_count\",\n    \"operation\": \"greater\",\n    \"value\": 10\n\n}"
+        },
+        {
+          "title": "Sort By",
+          "name": "sort_by",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "value": [
+            {
+              "field": "event_id",
+              "order": "asc"
+            }
+          ],
+          "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"event_id\",\"order\":\"asc\"}]",
+          "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"event_id\",\"order\":\"asc\"}]"
+        }
+      ]
+    },
+    {
+      "operation": "get_vulnerabilities",
+      "title": "Get Vulnerabilities",
+      "description": "Retrieves the details of Vulnerabilities corresponding to the Vulnerabilities table in the Claroty XDOME dashboard.",
+      "category": "investigation",
+      "annotation": "get_vulnerabilities",
+      "enabled": true,
+      "output_schema": {
+        "vulnerabilities": [
+          {
+            "vulnerability_priority_group": "",
+            "cvss_v2_exploitability_subscore": "",
+            "published_date": "",
+            "cvss_v3_exploitability_subscore": "",
+            "affected_ot_devices_count": "",
+            "description": "",
+            "vulnerability_type": "",
+            "epss_score": "",
+            "sources": [
+              {
+                "url": "",
+                "name": ""
+              }
+            ],
+            "affected_it_devices_count": "",
+            "is_known_exploited": "",
+            "recommendations": "",
+            "adjusted_vulnerability_score": "",
+            "name": "",
+            "cvss_v2_score": "",
+            "affected_iot_devices_count": "",
+            "source_name": "",
+            "affected_devices_count": "",
+            "affected_products": "",
+            "cve_ids": [],
+            "source_url": "",
+            "cvss_v3_score": "",
+            "id": "",
+            "exploits_count": "",
+            "vulnerability_note": "",
+            "adjusted_vulnerability_score_level": "",
+            "vulnerability_assignees": [],
+            "vulnerability_labels": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "Fields",
+          "name": "fields",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "json",
+          "value": {
+            "fields": [
+              "id",
+              "name",
+              "vulnerability_type",
+              "cve_ids",
+              "cvss_v2_score",
+              "cvss_v2_exploitability_subscore",
+              "cvss_v3_score",
+              "cvss_v3_exploitability_subscore",
+              "sources",
+              "source_name",
+              "source_url",
+              "description",
+              "affected_products",
+              "recommendations",
+              "is_known_exploited",
+              "affected_devices_count",
+              "affected_iot_devices_count",
+              "affected_it_devices_count",
+              "affected_ot_devices_count",
+              "published_date",
+              "adjusted_vulnerability_score",
+              "adjusted_vulnerability_score_level",
+              "exploits_count",
+              "vulnerability_labels",
+              "vulnerability_assignees",
+              "vulnerability_note",
+              "vulnerability_priority_group",
+              "epss_score"
+            ]
+          },
+          "tooltip": "Specify which fields to return for each Vulnerabilities.",
+          "description": "Specify which fields to return for each Vulnerabilities."
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": 0,
+          "type": "integer",
+          "tooltip": "Specify the initial index of page from where to retrieve the Vulnerabilities. Default value is 0",
+          "description": "Specify the initial index of page from where to retrieve the Vulnerabilities. Default value is 0"
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "value": 100,
+          "tooltip": "Specify the maximum amount of Vulnerabilities to fetch. Default value is 100",
+          "description": "Specify the maximum amount of Vulnerabilities to fetch. Default value is 100"
+        },
+        {
+          "title": "Filter By Vulnerability ID",
+          "name": "id",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Vulnerabilities ID you want to filter Vulnerabilities. One or more Vulnerabilities ID can be provided in a comma separated format.",
+          "description": "Specify the Vulnerabilities ID you want to filter Vulnerabilities. One or more Vulnerabilities ID can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter By Vulnerability name",
+          "name": "name",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Vulnerability Name designated by Claroty's Research team you want to filter Vulnerabilities. One or more Vulnerability name can be provided in a comma separated format.",
+          "description": "Specify the Vulnerability Name designated by Claroty's Research team you want to filter Vulnerabilities. One or more Vulnerability name can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter By Vulnerability Type",
+          "name": "vulnerability_type",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Vulnerability Type you want to filter Vulnerabilities. One or more Vulnerability Type can be provided in a comma separated format.",
+          "description": "Specify the Vulnerability Type you want to filter Vulnerabilities. One or more Vulnerability Type can be provided in a comma separated format."
+        },
+        {
+          "title": "Filter By CVE ID",
+          "name": "cve_ids",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the Vulnerability CVE ID you want to filter Vulnerability. One or more Vulnerability CVE ID version can be provided in a comma separated format",
+          "description": "Specify the Vulnerability CVE ID you want to filter Vulnerability. One or more Vulnerability CVE ID version can be provided in a comma separated format"
+        },
+        {
+          "title": "Filter By CVSS V3 Score",
+          "name": "cvss_v3_score",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "decimal",
+          "tooltip": "Specify the Common Vulnerability Scoring System Version 3 score,Vulnerabilities greater or equal to that will be fetched.",
+          "description": "Specify the Common Vulnerability Scoring System Version 3 score,Vulnerabilities greater or equal to that will be fetched."
+        },
+        {
+          "title": "Filter By",
+          "name": "filter_by",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "tooltip": "Specify the Filter query to filter the results, It can be a simple filter on a single field, or a combination of several filters for more complex logic. Ex: {\n\n    \"field\": \"medical_devices_count\",\n    \"operation\": \"greater\",\n    \"value\": 10\n\n}",
+          "description": "Specify the Filter query to filter the results, It can be a simple filter on a single field, or a combination of several filters for more complex logic. Ex: {\n\n    \"field\": \"medical_devices_count\",\n    \"operation\": \"greater\",\n    \"value\": 10\n\n}"
+        },
+        {
+          "title": "Sort By",
+          "name": "sort_by",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "value": [
+            {
+              "field": "published_date",
+              "order": "desc"
+            }
+          ],
+          "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is  {\n\"field\": \"published_date\",\n \"order\": \"desc\"\n}",
+          "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is  {\n\"field\": \"published_date\",\n \"order\": \"desc\"\n}"
+        }
+      ]
+    },
+    {
+      "operation": "execute_generic_claroty_api",
+      "title": "Execute Generic Claroty API",
+      "description": "Execute a generic Claroty API with the specified endpoint and parameters",
+      "category": "investigation",
+      "annotation": "execute_generic_claroty_api",
+      "enabled": true,
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "Endpoint",
+          "name": "endpoint",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "value": "/api/v1/",
+          "tooltip": "Specify the URI endpoint of Claroty XDOME REST API that you want to execute",
+          "description": "Specify the URI endpoint of Claroty XDOME REST API that you want to execute"
+        },
+        {
+          "title": "Parameters",
+          "name": "parameters",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "json",
+          "tooltip": "Specify the JSON parameters that you want to send as request body to the given REST Endpoint. Note: The Request Method is set as 'POST'",
+          "description": "Specify the JSON parameters that you want to send as request body to the given REST Endpoint. Note: The Request Method is set as 'POST'"
+        }
+      ]
+    }
+  ]
+}
