@@ -47,19 +47,19 @@ class ClarotyXDOMEConnector:
                     return response.json()
             elif response.status_code == 400:
                 error_response = response.json()
-                error_description = error_response['message']
-                raise ConnectorError({'error_description': error_description})
+                error_description = error_response['detail']
+                raise ConnectorError(error_description)
             elif response.status_code == 401:
                 error_response = response.json()
-                if error_response.get('error'):
-                    error_description = error_response['error']
+                if error_response.get('detail'):
+                    error_description = error_response['detail']
                 else:
-                    error_description = error_response['message']
-                raise ConnectorError({'error_description': error_description})
+                    error_description = error_response['detail']
+                raise ConnectorError(error_description)
             elif response.status_code == 404:
                 error_response = response.json()
-                error_description = error_response['message']
-                raise ConnectorError({'error_description': error_description})
+                error_description = error_response['detail']
+                raise ConnectorError(error_description)
             else:
                 logger.error(response.json())
         except requests.exceptions.SSLError:
@@ -110,6 +110,7 @@ def get_devices(config: dict, params: dict):
     try:
         cx = ClarotyXDOMEConnector(config)
         params = _build_payload(params)
+        logger.debug(f"After Build payload, params is {params}")
         endpoint = '/api/v1/devices'
         operands_list = _build_filter_query(params, device_fields_to_check)
         if len(operands_list) > 0:
@@ -163,6 +164,9 @@ def execute_generic_claroty_api(config: dict, params: dict):
 
 
 def _build_filter_query(params: dict, field_to_check: list) -> list:
+    """
+    field_to_check : List of fields to check for building filter query
+    """
     operands = []
     if params.get('filter_by') is not None:
         operands.extend(params.pop('filter_by'))
@@ -193,6 +197,14 @@ def _build_filter_query(params: dict, field_to_check: list) -> list:
         operands = _convert_epoch_to_utc(params.pop('after_detected_time'),
                                          {"field_name": "detected_time", "operation": "greater_or_equal"}, operands)
 
+    if params.get('before_updated_time') is not None:
+        operands = _convert_epoch_to_utc(params.pop('before_updated_time'),
+                                         {"field_name": "updated_time", "operation": "less_or_equal"}, operands)
+
+    if params.get('after_updated_time') is not None:
+        operands = _convert_epoch_to_utc(params.pop('after_updated_time'),
+                                         {"field_name": "updated_time", "operation": "greater_or_equal"}, operands)
+
     if params.get('cvss_v3_score') is not None:
         operands.append(
             {"field": "cvss_v3_score", "operation": "greater_or_equal", "value": params.pop('cvss_v3_score')})
@@ -222,7 +234,7 @@ def _build_payload(params: dict) -> dict:
             update_operands = [params.pop('filter_by')]
             params.update({"filter_by": update_operands})
 
-    return {key: val for key, val in params.items() if val is not None and val != ''}
+    return {key: val for key, val in params.items() if isinstance(val, (bool, int)) or val}
 
 
 operations = {

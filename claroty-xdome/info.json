@@ -109,28 +109,6 @@
           "description": "Specify which fields to return for each Alert."
         },
         {
-          "title": "Offset",
-          "name": "offset",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "value": 0,
-          "type": "integer",
-          "tooltip": "Specify the initial index of page from where to retrieve the Alerts. Default value is 0",
-          "description": "Specify the initial index of page from where to retrieve the Alerts. Default value is 0"
-        },
-        {
-          "title": "Limit",
-          "name": "limit",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "type": "integer",
-          "value": 100,
-          "tooltip": "Specify the maximum amount of Alerts to fetch. Default value is 100",
-          "description": "Specify the maximum amount of Alerts to fetch. Default value is 100"
-        },
-        {
           "title": "Before Detected Time",
           "name": "before_detected_time",
           "visible": true,
@@ -151,6 +129,26 @@
           "description": "Specify the time on which Alerts detected after that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z"
         },
         {
+          "title": "Before Updated Time",
+          "name": "before_updated_time",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "datetime",
+          "tooltip": "Specify the time on which Alerts updated before that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z",
+          "description": "Specify the time on which Alerts updated before that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z"
+        },
+        {
+          "title": "After Updated Time",
+          "name": "after_updated_time",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "datetime",
+          "tooltip": "Specify the time on which Alerts updated after that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z",
+          "description": "Specify the time on which Alerts updated after that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z"
+        },
+        {
           "title": "Filter By IDs",
           "name": "id",
           "visible": true,
@@ -159,21 +157,6 @@
           "type": "text",
           "tooltip": "Specify the Alert ID you want to filter Alerts. One or more ID can be provided in a comma separated format.",
           "description": "Specify the Alert ID you want to filter Alerts. One or more ID can be provided in a comma separated format."
-        },
-        {
-          "title": "Filter By Status",
-          "name": "status",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "type": "select",
-          "options": [
-            "Unresolved",
-            "Resolved",
-            "Acknowledged"
-          ],
-          "tooltip": "Specify the Alert Status you want to filter Alerts.",
-          "description": "Specify the Alert Status you want to filter Alerts."
         },
         {
           "title": "Filter By Category",
@@ -210,6 +193,28 @@
           ],
           "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"id\",\"order\":\"asc\"}]",
           "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"id\",\"order\":\"asc\"}]"
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": 0,
+          "type": "integer",
+          "tooltip": "Specify the initial index of page from where to retrieve the Alerts. Default value is 0",
+          "description": "Specify the initial index of page from where to retrieve the Alerts. Default value is 0"
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "value": 100,
+          "tooltip": "Specify the maximum amount of Alerts to fetch. Default value is 100. Limit can be set between 0 to 5000",
+          "description": "Specify the maximum amount of Alerts to fetch. Default value is 100. Limit can be set between 0 to 5000"
         }
       ]
     },
@@ -262,28 +267,6 @@
           "description": "Specify which fields to return for each Device."
         },
         {
-          "title": "Offset",
-          "name": "offset",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "value": 0,
-          "type": "integer",
-          "tooltip": "Specify the initial index of page from where to retrieve the Devices. Default value is 0",
-          "description": "Specify the initial index of page from where to retrieve the Devices. Default value is 0"
-        },
-        {
-          "title": "Limit",
-          "name": "limit",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "type": "integer",
-          "value": 100,
-          "tooltip": "Specify the maximum amount of Devices to fetch. Default value is 100",
-          "description": "Specify the maximum amount of Devices to fetch. Default value is 100"
-        },
-        {
           "title": "Filter By Device Type",
           "name": "device_type",
           "visible": true,
@@ -322,6 +305,42 @@
           "type": "text",
           "tooltip": "Specify the device software or firmware version you want to filter Devices. One or more Device software or firmware version can be provided in a comma separated format. Note: All Versions should be in captial Ex V5.1.3",
           "description": "Specify the device software or firmware version you want to filter Devices. One or more Device software or firmware version can be provided in a comma separated format. Note: All Versions should be in captial Ex V5.1.3"
+        },
+        {
+          "title": "Filter By Device Category",
+          "name": "device_category",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "multiselect",
+          "options": [
+            "IoT",
+            "IT",
+            "OT"
+          ],
+          "tooltip": "Specify the device category from which you want to filter devices",
+          "description": "Specify the device category from which you want to filter devices"
+        },
+        {
+          "title": "Filter By Device Sub-Category",
+          "name": "device_subcategory",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "multiselect",
+          "options": [
+            "Computers",
+            "Control",
+            "Endpoint",
+            "General IoT",
+            "Mobile Devices",
+            "Network",
+            "Operation",
+            "Process",
+            "Servers"
+          ],
+          "tooltip": "Specify the device subcategory from which you want to filter devices",
+          "description": "Specify the device subcategory from which you want to filter devices"
         },
         {
           "title": "Filter By Purdue Level",
@@ -398,6 +417,28 @@
           ],
           "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"uid\",\"order\":\"asc\"}]",
           "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"uid\",\"order\":\"asc\"}]"
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": 0,
+          "type": "integer",
+          "tooltip": "Specify the initial index of page from where to retrieve the Devices. Default value is 0",
+          "description": "Specify the initial index of page from where to retrieve the Devices. Default value is 0"
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "value": 100,
+          "tooltip": "Specify the maximum amount of Devices to fetch. Default value is 100. Limit can be set between 0 to 5000",
+          "description": "Specify the maximum amount of Devices to fetch. Default value is 100. Limit can be set between 0 to 5000"
         }
       ]
     },
@@ -464,16 +505,6 @@
           "description": "Specify which fields to return for each OT Event."
         },
         {
-          "title": "Offset",
-          "name": "offset",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "type": "integer",
-          "tooltip": "Specify the initial index of page from where to retrieve the OT Events. Default value is 0",
-          "description": "Specify the initial index of page from where to retrieve the OT Events. Default value is 0"
-        },
-        {
           "title": "Filter by OT Event ID",
           "name": "event_id",
           "visible": true,
@@ -514,17 +545,6 @@
           "description": "Specify the Source Asset ID you want to filter OT Events. One or more Source Asset ID can be provided in a comma separated format."
         },
         {
-          "title": "Limit",
-          "name": "limit",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "type": "integer",
-          "value": 100,
-          "tooltip": "Specify the maximum amount of OT Events to fetch. Default value is 100",
-          "description": "Specify the maximum amount of OT Events to fetch. Default value is 100"
-        },
-        {
           "title": "Filter By",
           "name": "filter_by",
           "visible": true,
@@ -549,6 +569,27 @@
           ],
           "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"event_id\",\"order\":\"asc\"}]",
           "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is [{\"field\":\"event_id\",\"order\":\"asc\"}]"
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the initial index of page from where to retrieve the OT Events. Default value is 0",
+          "description": "Specify the initial index of page from where to retrieve the OT Events. Default value is 0"
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "value": 100,
+          "tooltip": "Specify the maximum amount of OT Events to fetch. Default value is 100. Limit can be set between 0 to 5000",
+          "description": "Specify the maximum amount of OT Events to fetch. Default value is 100. Limit can be set between 0 to 5000"
         }
       ]
     },
@@ -642,28 +683,6 @@
           "description": "Specify which fields to return for each Vulnerabilities."
         },
         {
-          "title": "Offset",
-          "name": "offset",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "value": 0,
-          "type": "integer",
-          "tooltip": "Specify the initial index of page from where to retrieve the Vulnerabilities. Default value is 0",
-          "description": "Specify the initial index of page from where to retrieve the Vulnerabilities. Default value is 0"
-        },
-        {
-          "title": "Limit",
-          "name": "limit",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "type": "integer",
-          "value": 100,
-          "tooltip": "Specify the maximum amount of Vulnerabilities to fetch. Default value is 100",
-          "description": "Specify the maximum amount of Vulnerabilities to fetch. Default value is 100"
-        },
-        {
           "title": "Filter By Vulnerability ID",
           "name": "id",
           "visible": true,
@@ -738,6 +757,28 @@
           ],
           "tooltip": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is  {\n\"field\": \"published_date\",\n \"order\": \"desc\"\n}",
           "description": "Specify how the returned data should be sorted, If more than one sort clause is passed, additional clauses will be used to sort data that is equal in all previous clauses. Default value is  {\n\"field\": \"published_date\",\n \"order\": \"desc\"\n}"
+        },
+        {
+          "title": "Offset",
+          "name": "offset",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": 0,
+          "type": "integer",
+          "tooltip": "Specify the initial index of page from where to retrieve the Vulnerabilities. Default value is 0",
+          "description": "Specify the initial index of page from where to retrieve the Vulnerabilities. Default value is 0"
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "value": 100,
+          "tooltip": "Specify the maximum amount of Vulnerabilities to fetch. Default value is 100. Limit can be set between 0 to 5000",
+          "description": "Specify the maximum amount of Vulnerabilities to fetch. Default value is 100. Limit can be set between 0 to 5000"
         }
       ]
     },
