@@ -8,7 +8,7 @@
       "visible": true,
       "image": null,
       "uuid": "6cac58d8-657c-4c23-b88e-814aca11a015",
-      "id": 49,
+      "id": 222,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -91,7 +91,7 @@
           "groups": [],
           "priority": null,
           "uuid": "1cb7e389-3ec5-4b68-a1e2-ac0e1a4d3732",
-          "id": 541,
+          "id": 3016,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -208,7 +208,7 @@
           "groups": [],
           "priority": null,
           "uuid": "28675b12-977e-4f32-a396-9c9821b2f1b8",
-          "id": 542,
+          "id": 3017,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -321,7 +321,7 @@
           "groups": [],
           "priority": null,
           "uuid": "287d7472-7579-4b45-a84d-f8bc0d640a3c",
-          "id": 543,
+          "id": 3018,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -436,7 +436,7 @@
           "groups": [],
           "priority": null,
           "uuid": "4e0d831c-c7c8-4e67-9f9a-dc4acf50a1d9",
-          "id": 544,
+          "id": 3019,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -459,7 +459,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1711015863,
+          "lastModifyDate": 1713164583,
           "collection": "/api/3/workflow_collections/6cac58d8-657c-4c23-b88e-814aca11a015",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/7dc51862-7dd4-4daf-afe7-b50c161d111e",
@@ -469,10 +469,9 @@
               "name": "Configuration",
               "description": null,
               "arguments": {
-                "status": "",
                 "category": "",
                 "pullTimeMacro": "ClarotyXDOMELastPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}",
-                "alerts_status_map": "{'Acknowledged': {{'AlertStatus'| picklist('Investigating') }},'Resolved': {{'AlertStatus'| picklist('Closed'),'Unresolved': {{'AlertStatus'| picklist('Open') }}}"
+                "alerts_status_map": "{'Acknowledged': {{'AlertStatus'| picklist('Investigating') }},'Resolved': {{'AlertStatus'| picklist('Closed')}},'Unresolved': {{'AlertStatus'| picklist('Open') }}}"
               },
               "status": null,
               "top": "165",
@@ -532,7 +531,7 @@
               "description": null,
               "arguments": {
                 "last_pull_time": "{% if (vars.steps.Get_Macro_Value.data[\"hydra:member\"] | length) < 1%}{{arrow.utcnow().shift(minutes=-vars.fetch_alerts_in_last_X_minutes).format('YYYY-MM-DDTHH:mm:ss.ssssss')}}Z{% else %}{{vars.steps.Get_Macro_Value.data['hydra:member'][0]['value']}}{% endif %}",
-                "current_timestamp": "{{arrow.get(arrow.utcnow().timestamp).strftime('%Y-%m-%dT%H:%M:%S.%fZ')}}"
+                "current_timestamp": "{{arrow.utcnow().format(\"YYYY-MM-DDTHH:mm:ss.SSSSSS\")}}Z"
               },
               "status": null,
               "top": "435",
@@ -580,7 +579,9 @@
                   ],
                   "category": "{{vars.category}}",
                   "filter_by": "",
-                  "after_detected_time": "{{vars.last_pull_time}}",
+                  "after_updated_time": "{{vars.last_pull_time}}",
+                  "after_detected_time": "",
+                  "before_updated_time": "",
                   "before_detected_time": ""
                 },
                 "version": "1.0.0",
@@ -636,7 +637,9 @@
                   ],
                   "category": "{{vars.category}}",
                   "filter_by": "",
-                  "after_detected_time": "{{vars.last_pull_time}}",
+                  "after_updated_time": "{{vars.last_pull_time}}",
+                  "after_detected_time": "",
+                  "before_updated_time": "",
                   "before_detected_time": ""
                 },
                 "version": "1.0.0",
@@ -743,7 +746,7 @@
                   "input": {
                     "params": []
                   },
-                  "_configuration_schema": "[        \n{\n    \"title\": \"Pull Alerts Created in Last X min\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"integer\",\n    \"name\": \"fetch_alerts_in_last_X_minutes\",\n    \"tooltip\": \"Specify the timeframe in minutes to pull the alerts for the first time.\"\n  },\n{\n          \"title\": \"Status\",\n          \"name\": \"status\",\n          \"type\": \"select\",\n          \"tooltip\": \"Select the status to filter alerts retrieved based on your selection.\",\n          \"options\": [\n            \"Resolved\",\n            \"Acknowledged\"\n          ],\n          \"required\": false,\n          \"editable\": true,\n          \"visible\": true\n        },\n        {\n          \"title\": \"Alert Category\",\n          \"name\": \"category\",\n          \"type\": \"text\",\n          \"tooltip\": \"Specify the Alert category you want to filter Alerts\",\n          \"required\": false,\n          \"editable\": true,\n          \"visible\": true\n        }\n]"
+                  "_configuration_schema": "[\n   {\n      \"title\":\"Pull Alerts Created or Updated in Last X min\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"type\":\"integer\",\n      \"name\":\"fetch_alerts_in_last_X_minutes\",\n      \"tooltip\":\"Specify the timeframe in minutes to pull the alerts for the first time.\"\n   },\n   {\n      \"title\":\"Alert Category\",\n      \"name\":\"category\",\n      \"type\":\"text\",\n      \"tooltip\":\"Specify the Alert category you want to filter Alerts\",\n      \"required\":false,\n      \"editable\":true,\n      \"visible\":true\n   }\n]"
                 },
                 "triggerOnSource": true,
                 "triggerOnReplicate": false
@@ -875,7 +878,7 @@
           "groups": [],
           "priority": null,
           "uuid": "5f593b61-06a6-4a99-83b9-7ce65171c04c",
-          "id": 545,
+          "id": 3020,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -994,7 +997,7 @@
           "groups": [],
           "priority": null,
           "uuid": "69024304-4436-40d6-9dc3-a3cd36b1f743",
-          "id": 546,
+          "id": 3021,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1123,7 +1126,7 @@
           "groups": [],
           "priority": null,
           "uuid": "e3027165-9527-4035-88a7-300383fc55a5",
-          "id": 547,
+          "id": 3022,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
