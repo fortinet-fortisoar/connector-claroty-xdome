@@ -149,7 +149,7 @@
           "description": "Specify the time on which Alerts updated after that time will be fetched. Note: Provide time in %Y-%m-%dT%H:%M:%S.%fZ format, Ex: 2023-10-19T09:14:53.101000Z"
         },
         {
-          "title": "Filter By IDs",
+          "title": "IDs",
           "name": "id",
           "visible": true,
           "required": false,
@@ -159,7 +159,7 @@
           "description": "Specify the Alert ID you want to filter Alerts. One or more ID can be provided in a comma separated format."
         },
         {
-          "title": "Filter By Category",
+          "title": "Category",
           "name": "category",
           "visible": true,
           "required": false,
@@ -267,7 +267,7 @@
           "description": "Specify which fields to return for each Device."
         },
         {
-          "title": "Filter By Device Type",
+          "title": "Device Type",
           "name": "device_type",
           "visible": true,
           "required": false,
@@ -277,7 +277,7 @@
           "description": "Specify the device type you want to filter Devices. One or more Device type can be provided in a comma separated format."
         },
         {
-          "title": "Filter By MAC OUI",
+          "title": "MAC OUI",
           "name": "mac_oui_list",
           "visible": true,
           "required": false,
@@ -287,7 +287,7 @@
           "description": "Specify the vendor of the device's NIC (according to the OUI MAC) you want to filter Devices. One or more MAC OUIs can be provided in a comma separated format."
         },
         {
-          "title": "Filter By Model",
+          "title": "Model",
           "name": "model",
           "visible": true,
           "required": false,
@@ -297,7 +297,7 @@
           "description": "Specify the device model you want to filter Devices. One or more Device model can be provided in a comma separated format."
         },
         {
-          "title": "Filter By Software/Firmware Version",
+          "title": "Software/Firmware Version",
           "name": "software_or_firmware_version",
           "visible": true,
           "required": false,
@@ -307,7 +307,7 @@
           "description": "Specify the device software or firmware version you want to filter Devices. One or more Device software or firmware version can be provided in a comma separated format. Note: All Versions should be in captial Ex V5.1.3"
         },
         {
-          "title": "Filter By Device Category",
+          "title": "Device Category",
           "name": "device_category",
           "visible": true,
           "required": false,
@@ -322,7 +322,7 @@
           "description": "Specify the device category from which you want to filter devices"
         },
         {
-          "title": "Filter By Device Sub-Category",
+          "title": "Device Sub-Category",
           "name": "device_subcategory",
           "visible": true,
           "required": false,
@@ -343,7 +343,7 @@
           "description": "Specify the device subcategory from which you want to filter devices"
         },
         {
-          "title": "Filter By Purdue Level",
+          "title": "Purdue Level",
           "name": "purdue_level",
           "visible": true,
           "required": false,
@@ -360,7 +360,7 @@
           "description": "Specify the Device Purdue level with which you want to filter Devices"
         },
         {
-          "title": "Filter By Vulnerabilities",
+          "title": "Vulnerabilities",
           "name": "known_vulnerabilities",
           "visible": true,
           "required": false,
@@ -377,7 +377,7 @@
           "description": "Specify the Known Vulnerabilities you want to filter devices."
         },
         {
-          "title": "Filter By Risk Score",
+          "title": "Risk Score",
           "name": "risk_score",
           "visible": true,
           "required": false,
@@ -683,7 +683,7 @@
           "description": "Specify which fields to return for each Vulnerabilities."
         },
         {
-          "title": "Filter By Vulnerability ID",
+          "title": "Vulnerability ID",
           "name": "id",
           "visible": true,
           "required": false,
@@ -693,7 +693,7 @@
           "description": "Specify the Vulnerabilities ID you want to filter Vulnerabilities. One or more Vulnerabilities ID can be provided in a comma separated format."
         },
         {
-          "title": "Filter By Vulnerability name",
+          "title": "Vulnerability name",
           "name": "name",
           "visible": true,
           "required": false,
@@ -703,7 +703,7 @@
           "description": "Specify the Vulnerability Name designated by Claroty's Research team you want to filter Vulnerabilities. One or more Vulnerability name can be provided in a comma separated format."
         },
         {
-          "title": "Filter By Vulnerability Type",
+          "title": "Vulnerability Type",
           "name": "vulnerability_type",
           "visible": true,
           "required": false,
@@ -713,7 +713,7 @@
           "description": "Specify the Vulnerability Type you want to filter Vulnerabilities. One or more Vulnerability Type can be provided in a comma separated format."
         },
         {
-          "title": "Filter By CVE ID",
+          "title": "CVE ID",
           "name": "cve_ids",
           "visible": true,
           "required": false,
@@ -723,7 +723,7 @@
           "description": "Specify the Vulnerability CVE ID you want to filter Vulnerability. One or more Vulnerability CVE ID version can be provided in a comma separated format"
         },
         {
-          "title": "Filter By CVSS V3 Score",
+          "title": "CVSS V3 Score",
           "name": "cvss_v3_score",
           "visible": true,
           "required": false,
