@@ -2,450 +2,9 @@
   "type": "workflow_collections",
   "data": [
     {
+      "uuid": "1e153f3c-9061-4106-9786-cad63184a155",
       "@type": "WorkflowCollection",
-      "name": "Sample - Claroty XDOME - 1.0.0",
-      "description": "Sample playbooks for \"Claroty XDOME\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
-      "visible": true,
-      "image": null,
-      "uuid": "6cac58d8-657c-4c23-b88e-814aca11a015",
-      "id": 222,
-      "deletedAt": null,
-      "importedBy": [],
-      "recordTags": [
-        "Claroty",
-        "claroty-xdome"
-      ],
       "workflows": [
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Execute Generic Claroty API",
-          "aliasName": null,
-          "tag": "#Claroty XDOME",
-          "description": "Execute a generic Claroty API with the specified endpoint and parameters",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/6cac58d8-657c-4c23-b88e-814aca11a015",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/f5574ad6-06b4-4091-a850-9b51441d11d5",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Execute Generic Claroty API",
-              "description": null,
-              "arguments": {
-                "name": "Claroty XDOME",
-                "config": "",
-                "params": {
-                  "endpoint": "/api/v1/",
-                  "parameters": ""
-                },
-                "version": "1.0.0",
-                "connector": "claroty-xdome",
-                "operation": "execute_generic_claroty_api",
-                "operationTitle": "Execute Generic Claroty API"
-              },
-              "status": null,
-              "top": "120",
-              "left": "188",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "0ea2032d-114d-4012-b1f6-bcf29633690b"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "step_variables": {
-                  "input": {
-                    "params": []
-                  }
-                }
-              },
-              "status": null,
-              "top": "20",
-              "left": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-              "group": null,
-              "uuid": "f5574ad6-06b4-4091-a850-9b51441d11d5"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start-> Execute Generic Claroty API",
-              "targetStep": "/api/3/workflow_steps/0ea2032d-114d-4012-b1f6-bcf29633690b",
-              "sourceStep": "/api/3/workflow_steps/f5574ad6-06b4-4091-a850-9b51441d11d5",
-              "label": null,
-              "isExecuted": false,
-              "group": null,
-              "uuid": "b43f8969-57e7-4e4c-85da-33fedef7ceca"
-            }
-          ],
-          "groups": [],
-          "priority": null,
-          "uuid": "1cb7e389-3ec5-4b68-a1e2-ac0e1a4d3732",
-          "id": 3016,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "Claroty",
-            "claroty-xdome"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get OT Activity Events",
-          "aliasName": null,
-          "tag": "#Claroty XDOME",
-          "description": "Retrieves the details of OT events corresponding to the events table in the OT Activity page in the Claroty XDOME dashboard.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/6cac58d8-657c-4c23-b88e-814aca11a015",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/ff7b0a33-a62c-499f-91fd-1ca0cb83257c",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get OT Activity Events",
-              "description": null,
-              "arguments": {
-                "name": "Claroty XDOME",
-                "config": "",
-                "params": {
-                  "limit": 100,
-                  "fields": {
-                    "fields": [
-                      "detection_time",
-                      "event_type",
-                      "related_alert_ids",
-                      "description",
-                      "dest_asset_id",
-                      "dest_ip",
-                      "dest_device_type",
-                      "protocol",
-                      "dest_port",
-                      "source_port",
-                      "source_asset_id",
-                      "source_ip",
-                      "source_device_type",
-                      "source_username",
-                      "mode",
-                      "event_id",
-                      "ip_protocol"
-                    ]
-                  },
-                  "offset": "",
-                  "sort_by": [
-                    {
-                      "field": "event_id",
-                      "order": "asc"
-                    }
-                  ],
-                  "event_id": "",
-                  "filter_by": "",
-                  "event_type": "",
-                  "dest_asset_id": "",
-                  "source_asset_id": ""
-                },
-                "version": "1.0.0",
-                "connector": "claroty-xdome",
-                "operation": "get_ot_events",
-                "operationTitle": "Get OT Activity Events"
-              },
-              "status": null,
-              "top": "120",
-              "left": "188",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "a2fc291f-6462-4207-a722-de1a982a7d7b"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "step_variables": {
-                  "input": {
-                    "params": []
-                  }
-                }
-              },
-              "status": null,
-              "top": "20",
-              "left": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-              "group": null,
-              "uuid": "ff7b0a33-a62c-499f-91fd-1ca0cb83257c"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start-> Get OT Activity Events",
-              "targetStep": "/api/3/workflow_steps/a2fc291f-6462-4207-a722-de1a982a7d7b",
-              "sourceStep": "/api/3/workflow_steps/ff7b0a33-a62c-499f-91fd-1ca0cb83257c",
-              "label": null,
-              "isExecuted": false,
-              "group": null,
-              "uuid": "bab64912-ce53-4f01-8d44-be9768da9ecb"
-            }
-          ],
-          "groups": [],
-          "priority": null,
-          "uuid": "28675b12-977e-4f32-a396-9c9821b2f1b8",
-          "id": 3017,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "Claroty",
-            "claroty-xdome"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Claroty XDOME > Ingest",
-          "aliasName": null,
-          "tag": "#armis #ingest #dataingestion #create",
-          "description": "Fetch Alerts from Claroty XDOME and Creates records in FortiSOAR.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1711002984,
-          "collection": "/api/3/workflow_collections/6cac58d8-657c-4c23-b88e-814aca11a015",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/914bb445-d757-45da-9082-b6dc15f462e0",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Fetch and Create",
-              "description": null,
-              "arguments": {
-                "arguments": [],
-                "apply_async": false,
-                "step_variables": [],
-                "pass_input_record": true,
-                "workflowReference": "/api/3/workflows/5f593b61-06a6-4a99-83b9-7ce65171c04c"
-              },
-              "status": null,
-              "top": "160",
-              "left": "120",
-              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-              "group": null,
-              "uuid": "56f83dd2-7144-418f-8deb-e1f18ab1da20"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "step_variables": {
-                  "input": {
-                    "params": []
-                  }
-                }
-              },
-              "status": null,
-              "top": "20",
-              "left": "120",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-              "group": null,
-              "uuid": "914bb445-d757-45da-9082-b6dc15f462e0"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Update Last Pull Time",
-              "description": null,
-              "arguments": {
-                "config": "32a9a084-8135-41bb-8649-569c45d80505",
-                "params": {
-                  "macro": "{{vars.steps.Fetch_and_Create.macro_name}}",
-                  "value": "{{vars.steps.Fetch_and_Create.updated_last_pull_time}}"
-                },
-                "version": "3.2.3",
-                "connector": "cyops_utilities",
-                "operation": "updatemacro",
-                "operationTitle": "CyOPs: Update Macro",
-                "step_variables": []
-              },
-              "status": null,
-              "top": "300",
-              "left": "120",
-              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
-              "group": null,
-              "uuid": "f8aad2fd-d357-4626-a3ee-8cb0d4835980"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Fetch and Create -> Update Last Alert Fetch Macro",
-              "targetStep": "/api/3/workflow_steps/f8aad2fd-d357-4626-a3ee-8cb0d4835980",
-              "sourceStep": "/api/3/workflow_steps/56f83dd2-7144-418f-8deb-e1f18ab1da20",
-              "label": null,
-              "isExecuted": false,
-              "group": null,
-              "uuid": "20b10ebd-601d-4d56-87f3-7c09c729d05f"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Fetch Alerts",
-              "targetStep": "/api/3/workflow_steps/56f83dd2-7144-418f-8deb-e1f18ab1da20",
-              "sourceStep": "/api/3/workflow_steps/914bb445-d757-45da-9082-b6dc15f462e0",
-              "label": null,
-              "isExecuted": false,
-              "group": null,
-              "uuid": "33be4032-21b7-4139-abf7-861c22daaf72"
-            }
-          ],
-          "groups": [],
-          "priority": null,
-          "uuid": "287d7472-7579-4b45-a84d-f8bc0d640a3c",
-          "id": 3018,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "Claroty",
-            "claroty-xdome",
-            "dataingestion",
-            "ingest"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Devices",
-          "aliasName": null,
-          "tag": "#Claroty XDOME",
-          "description": "Retrieves the details of Devices corresponding to the Devices table in the Claroty XDOME dashboard.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/6cac58d8-657c-4c23-b88e-814aca11a015",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/83d6a9fb-3a5c-41d8-81fb-1516176bf0ec",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Devices",
-              "description": null,
-              "arguments": {
-                "name": "Claroty XDOME",
-                "config": "",
-                "params": {
-                  "limit": 100,
-                  "model": "",
-                  "fields": {
-                    "fields": [
-                      "network_list",
-                      "device_category",
-                      "device_subcategory",
-                      "device_type",
-                      "uid",
-                      "asset_id",
-                      "mac_list",
-                      "ip_list",
-                      "device_type_family",
-                      "model"
-                    ]
-                  },
-                  "offset": "",
-                  "sort_by": [
-                    {
-                      "field": "uid",
-                      "order": "asc"
-                    }
-                  ],
-                  "filter_by": "",
-                  "risk_score": "",
-                  "device_type": "",
-                  "mac_oui_list": "",
-                  "purdue_level": "",
-                  "known_vulnerabilities": "",
-                  "software_or_firmware_version": ""
-                },
-                "version": "1.0.0",
-                "connector": "claroty-xdome",
-                "operation": "get_devices",
-                "operationTitle": "Get Devices"
-              },
-              "status": null,
-              "top": "120",
-              "left": "188",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "232d93d3-457b-48cb-ba0c-4503786173d6"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "step_variables": {
-                  "input": {
-                    "params": []
-                  }
-                }
-              },
-              "status": null,
-              "top": "20",
-              "left": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-              "group": null,
-              "uuid": "83d6a9fb-3a5c-41d8-81fb-1516176bf0ec"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start-> Get Devices",
-              "targetStep": "/api/3/workflow_steps/232d93d3-457b-48cb-ba0c-4503786173d6",
-              "sourceStep": "/api/3/workflow_steps/83d6a9fb-3a5c-41d8-81fb-1516176bf0ec",
-              "label": null,
-              "isExecuted": false,
-              "group": null,
-              "uuid": "d51d496a-2efa-45f6-b313-7652f26552ec"
-            }
-          ],
-          "groups": [],
-          "priority": null,
-          "uuid": "4e0d831c-c7c8-4e67-9f9a-dc4acf50a1d9",
-          "id": 3019,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "Claroty",
-            "claroty-xdome"
-          ]
-        },
         {
           "@type": "Workflow",
           "triggerLimit": null,
@@ -459,8 +18,8 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1713164583,
-          "collection": "/api/3/workflow_collections/6cac58d8-657c-4c23-b88e-814aca11a015",
+          "lastModifyDate": 1713767578,
+          "collection": "/api/3/workflow_collections/1e153f3c-9061-4106-9786-cad63184a155",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/7dc51862-7dd4-4daf-afe7-b50c161d111e",
           "steps": [
@@ -470,6 +29,7 @@
               "description": null,
               "arguments": {
                 "category": "",
+                "alert_limit": "100",
                 "pullTimeMacro": "ClarotyXDOMELastPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}",
                 "alerts_status_map": "{'Acknowledged': {{'AlertStatus'| picklist('Investigating') }},'Resolved': {{'AlertStatus'| picklist('Closed')}},'Unresolved': {{'AlertStatus'| picklist('Open') }}}"
               },
@@ -500,9 +60,11 @@
                   "state": "/api/3/picklists/a1bac09b-1441-45aa-ad1b-c88744e48e72",
                   "source": "Claroty XDOME",
                   "status": "{{vars.item.status | resolveRange(vars.alerts_status_map)}}",
+                  "severity": "/api/3/picklists/58d0753f-f7e4-403b-953c-b0f521eab759",
+                  "sourceId": "{{vars.item[\"id\"]}}",
                   "__replace": "true",
                   "sourcedata": "{{vars.item | toJSON }}",
-                  "description": "Alert ingested via Claroty XDOME",
+                  "description": "Alert ingested via Claroty XDOME\n\n<style>\n    table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n    }\n</style>\n<table border=\"1\" style=\"width:100%\">\n    <tr>\n        <th style=\"width:10%\">ID</th>\n        <th style=\"width:10%\">Status</th>\n        <th style=\"width:10%\">Category</th>\n        <th style=\"width:10%\">Alert Class</th>\n        <th style=\"width:10%\">Devices Count</th>\n        <th style=\"width:10%\">Alert Type Name</th>\n        <th style=\"width:10%\">Detected Time</th>\n        <th style=\"width:10%\">Updated Time</th>\n    </tr>\n    <tbody>\n        <tr>\n            <td>\n                {{vars.item['id']}}\n            </td>\n            <td>\n                {{vars.item['status']}}\n            </td>\n            <td>\n               {{vars.item['category']}}\n            </td>\n            <td>\n                {{vars.item['alert_class']}}    \n            </td>\n            <td>\n                {{vars.item['devices_count']}}    \n            </td>\n            <td>\n                {{vars.item['alert_type_name']}}    \n            </td>\n            <td>\n                {{vars.item['detected_time']}}    \n            </td>\n            <td>\n                {{vars.item['updated_time']}}    \n            </td>\n        </tr>\n    </tbody>\n</table>",
                   "ackSlaStatus": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",
                   "respSlaStatus": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",
                   "priorityWeight": 1,
@@ -549,7 +111,7 @@
                 "config": "f51261b7-c61c-453b-b567-c9fe2fe97b61",
                 "params": {
                   "id": "",
-                  "limit": 100,
+                  "limit": "{{vars.alert_limit}}",
                   "fields": {
                     "fields": [
                       "id",
@@ -746,7 +308,7 @@
                   "input": {
                     "params": []
                   },
-                  "_configuration_schema": "[\n   {\n      \"title\":\"Pull Alerts Created or Updated in Last X min\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"type\":\"integer\",\n      \"name\":\"fetch_alerts_in_last_X_minutes\",\n      \"tooltip\":\"Specify the timeframe in minutes to pull the alerts for the first time.\"\n   },\n   {\n      \"title\":\"Alert Category\",\n      \"name\":\"category\",\n      \"type\":\"text\",\n      \"tooltip\":\"Specify the Alert category you want to filter Alerts\",\n      \"required\":false,\n      \"editable\":true,\n      \"visible\":true\n   }\n]"
+                  "_configuration_schema": "[\n   {\n      \"title\":\"Pull Alerts Created or Updated in Last X min\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"type\":\"integer\",\n      \"name\":\"fetch_alerts_in_last_X_minutes\",\n      \"tooltip\":\"Specify the timeframe in minutes to pull the alerts for the first time.\"\n   },\n   {\n      \"title\":\"Limit\",\n      \"name\":\"alert_limit\",\n      \"type\":\"integer\",\n      \"tooltip\":\"Specify the number of Alerts you want to ingest\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true\n   },\n   {\n      \"title\":\"Alert Category\",\n      \"name\":\"category\",\n      \"type\":\"text\",\n      \"tooltip\":\"Specify the Alert category you want to filter Alerts\",\n      \"required\":false,\n      \"editable\":true,\n      \"visible\":true\n   }\n]"
                 },
                 "triggerOnSource": true,
                 "triggerOnReplicate": false
@@ -878,7 +440,7 @@
           "groups": [],
           "priority": null,
           "uuid": "5f593b61-06a6-4a99-83b9-7ce65171c04c",
-          "id": 3020,
+          "id": 2625,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -894,31 +456,150 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get Alerts",
+          "name": "Claroty XDOME > Ingest",
           "aliasName": null,
-          "tag": "#Claroty XDOME",
-          "description": "Retrieves the details of alerts corresponding to the Alerts table in the Claroty XDOME dashboard.",
+          "tag": "#armis #ingest #dataingestion #create",
+          "description": "Fetch Alerts from Claroty XDOME and Creates records in FortiSOAR.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/6cac58d8-657c-4c23-b88e-814aca11a015",
+          "lastModifyDate": 1711002984,
+          "collection": "/api/3/workflow_collections/1e153f3c-9061-4106-9786-cad63184a155",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/c28aecd7-e83f-46b0-b676-9ac8a08a5de9",
+          "triggerStep": "/api/3/workflow_steps/914bb445-d757-45da-9082-b6dc15f462e0",
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Fetch and Create",
+              "description": null,
+              "arguments": {
+                "arguments": [],
+                "apply_async": false,
+                "step_variables": [],
+                "pass_input_record": true,
+                "workflowReference": "/api/3/workflows/5f593b61-06a6-4a99-83b9-7ce65171c04c"
+              },
+              "status": null,
+              "top": "160",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+              "group": null,
+              "uuid": "56f83dd2-7144-418f-8deb-e1f18ab1da20"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "914bb445-d757-45da-9082-b6dc15f462e0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Last Pull Time",
+              "description": null,
+              "arguments": {
+                "config": "32a9a084-8135-41bb-8649-569c45d80505",
+                "params": {
+                  "macro": "{{vars.steps.Fetch_and_Create.macro_name}}",
+                  "value": "{{vars.steps.Fetch_and_Create.updated_last_pull_time}}"
+                },
+                "version": "3.2.3",
+                "connector": "cyops_utilities",
+                "operation": "updatemacro",
+                "operationTitle": "CyOPs: Update Macro",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "f8aad2fd-d357-4626-a3ee-8cb0d4835980"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Fetch and Create -> Update Last Alert Fetch Macro",
+              "targetStep": "/api/3/workflow_steps/f8aad2fd-d357-4626-a3ee-8cb0d4835980",
+              "sourceStep": "/api/3/workflow_steps/56f83dd2-7144-418f-8deb-e1f18ab1da20",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "20b10ebd-601d-4d56-87f3-7c09c729d05f"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Fetch Alerts",
+              "targetStep": "/api/3/workflow_steps/56f83dd2-7144-418f-8deb-e1f18ab1da20",
+              "sourceStep": "/api/3/workflow_steps/914bb445-d757-45da-9082-b6dc15f462e0",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "33be4032-21b7-4139-abf7-861c22daaf72"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "287d7472-7579-4b45-a84d-f8bc0d640a3c",
+          "id": 2612,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Claroty",
+            "claroty-xdome",
+            "dataingestion",
+            "ingest"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "7dc00150-709b-4d59-bae2-87ff990878da",
+          "collection": "/api/3/workflow_collections/1e153f3c-9061-4106-9786-cad63184a155",
+          "steps": [
+            {
+              "uuid": "7911abd9-47cb-4e39-89ed-bbe57397f413",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "c6d95545-66e3-4581-af96-d20ae6cfcec4",
+              "@type": "WorkflowStep",
               "name": "Get Alerts",
               "description": null,
+              "status": null,
               "arguments": {
                 "name": "Claroty XDOME",
                 "config": "",
                 "params": {
-                  "id": "",
-                  "limit": 100,
                   "fields": {
                     "fields": [
                       "id",
@@ -938,35 +619,69 @@
                       "malicious_ip_tags_list"
                     ]
                   },
-                  "offset": "",
-                  "status": "",
+                  "before_detected_time": "",
+                  "after_detected_time": "",
+                  "before_updated_time": "",
+                  "after_updated_time": "",
+                  "id": "",
+                  "category": "",
+                  "filter_by": "",
                   "sort_by": [
                     {
                       "field": "id",
                       "order": "asc"
                     }
                   ],
-                  "category": "",
-                  "filter_by": "",
-                  "after_detected_time": "",
-                  "before_detected_time": ""
+                  "offset": "",
+                  "limit": 100
                 },
                 "version": "1.0.0",
                 "connector": "claroty-xdome",
                 "operation": "get_alerts",
                 "operationTitle": "Get Alerts"
               },
-              "status": null,
-              "top": "120",
               "left": "188",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "01fce272-f2a3-40bf-a1a9-1edbbe35bb91"
-            },
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the details of alerts corresponding to the Alerts table in the Claroty XDOME dashboard.",
+          "name": "Get Alerts",
+          "tag": "#Claroty XDOME",
+          "recordTags": [
+            "Claroty",
+            "claroty-xdome"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7911abd9-47cb-4e39-89ed-bbe57397f413",
+          "routes": [
             {
+              "uuid": "68a93216-a1ef-407d-a9be-0e7902669599",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Alerts",
+              "sourceStep": "/api/3/workflow_steps/7911abd9-47cb-4e39-89ed-bbe57397f413",
+              "targetStep": "/api/3/workflow_steps/c6d95545-66e3-4581-af96-d20ae6cfcec4"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "59a4309f-3819-4c71-9fb6-069b6fd8ec06",
+          "collection": "/api/3/workflow_collections/1e153f3c-9061-4106-9786-cad63184a155",
+          "steps": [
+            {
+              "uuid": "f903f869-a8f9-4614-8f7b-eb036448f941",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
+              "status": null,
               "arguments": {
                 "step_variables": {
                   "input": {
@@ -974,68 +689,224 @@
                   }
                 }
               },
-              "status": null,
-              "top": "20",
               "left": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-              "group": null,
-              "uuid": "c28aecd7-e83f-46b0-b676-9ac8a08a5de9"
-            }
-          ],
-          "routes": [
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
             {
-              "@type": "WorkflowRoute",
-              "name": "Start-> Get Alerts",
-              "targetStep": "/api/3/workflow_steps/01fce272-f2a3-40bf-a1a9-1edbbe35bb91",
-              "sourceStep": "/api/3/workflow_steps/c28aecd7-e83f-46b0-b676-9ac8a08a5de9",
-              "label": null,
-              "isExecuted": false,
-              "group": null,
-              "uuid": "cedd2dd0-7a33-4070-a31c-9bcbc32117d8"
-            }
-          ],
-          "groups": [],
-          "priority": null,
-          "uuid": "69024304-4436-40d6-9dc3-a3cd36b1f743",
-          "id": 3021,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "Claroty",
-            "claroty-xdome"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Vulnerabilities",
-          "aliasName": null,
-          "tag": "#Claroty XDOME",
-          "description": "Retrieves the details of Vulnerabilities corresponding to the Vulnerabilities table in the Claroty XDOME dashboard.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/6cac58d8-657c-4c23-b88e-814aca11a015",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/1cf62709-4c67-4dd9-a61e-19aa6f00ee30",
-          "steps": [
-            {
+              "uuid": "0a7119bf-4405-4f68-a967-afdb04c5595f",
               "@type": "WorkflowStep",
-              "name": "Get Vulnerabilities",
+              "name": "Get Devices",
               "description": null,
+              "status": null,
               "arguments": {
                 "name": "Claroty XDOME",
                 "config": "",
                 "params": {
-                  "id": "",
-                  "name": "",
-                  "limit": 100,
+                  "fields": {
+                    "fields": [
+                      "network_list",
+                      "device_category",
+                      "device_subcategory",
+                      "device_type",
+                      "uid",
+                      "asset_id",
+                      "mac_list",
+                      "ip_list",
+                      "device_type_family",
+                      "model"
+                    ]
+                  },
+                  "device_type": "",
+                  "mac_oui_list": "",
+                  "model": "",
+                  "software_or_firmware_version": "",
+                  "device_category": "",
+                  "device_subcategory": "",
+                  "purdue_level": "",
+                  "known_vulnerabilities": "",
+                  "risk_score": "",
+                  "filter_by": "",
+                  "sort_by": [
+                    {
+                      "field": "uid",
+                      "order": "asc"
+                    }
+                  ],
+                  "offset": "",
+                  "limit": 100
+                },
+                "version": "1.0.0",
+                "connector": "claroty-xdome",
+                "operation": "get_devices",
+                "operationTitle": "Get Devices"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the details of Devices corresponding to the Devices table in the Claroty XDOME dashboard.",
+          "name": "Get Devices",
+          "tag": "#Claroty XDOME",
+          "recordTags": [
+            "Claroty",
+            "claroty-xdome"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/f903f869-a8f9-4614-8f7b-eb036448f941",
+          "routes": [
+            {
+              "uuid": "42eae28a-d83f-487f-9036-2b56e3251702",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Devices",
+              "sourceStep": "/api/3/workflow_steps/f903f869-a8f9-4614-8f7b-eb036448f941",
+              "targetStep": "/api/3/workflow_steps/0a7119bf-4405-4f68-a967-afdb04c5595f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "e4685a42-d819-489e-95a4-95397bc5984c",
+          "collection": "/api/3/workflow_collections/1e153f3c-9061-4106-9786-cad63184a155",
+          "steps": [
+            {
+              "uuid": "e4285926-0632-4edb-94e1-574d66aef556",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "dbd05940-f73e-4c19-8470-e6d92026f3d6",
+              "@type": "WorkflowStep",
+              "name": "Get OT Activity Events",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Claroty XDOME",
+                "config": "",
+                "params": {
+                  "fields": {
+                    "fields": [
+                      "detection_time",
+                      "event_type",
+                      "related_alert_ids",
+                      "description",
+                      "dest_asset_id",
+                      "dest_ip",
+                      "dest_device_type",
+                      "protocol",
+                      "dest_port",
+                      "source_port",
+                      "source_asset_id",
+                      "source_ip",
+                      "source_device_type",
+                      "source_username",
+                      "mode",
+                      "event_id",
+                      "ip_protocol"
+                    ]
+                  },
+                  "event_id": "",
+                  "event_type": "",
+                  "dest_asset_id": "",
+                  "source_asset_id": "",
+                  "filter_by": "",
+                  "sort_by": [
+                    {
+                      "field": "event_id",
+                      "order": "asc"
+                    }
+                  ],
+                  "offset": "",
+                  "limit": 100
+                },
+                "version": "1.0.0",
+                "connector": "claroty-xdome",
+                "operation": "get_ot_events",
+                "operationTitle": "Get OT Activity Events"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the details of OT events corresponding to the events table in the OT Activity page in the Claroty XDOME dashboard.",
+          "name": "Get OT Activity Events",
+          "tag": "#Claroty XDOME",
+          "recordTags": [
+            "Claroty",
+            "claroty-xdome"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e4285926-0632-4edb-94e1-574d66aef556",
+          "routes": [
+            {
+              "uuid": "998978ac-66e7-4146-b666-d961420d7573",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get OT Activity Events",
+              "sourceStep": "/api/3/workflow_steps/e4285926-0632-4edb-94e1-574d66aef556",
+              "targetStep": "/api/3/workflow_steps/dbd05940-f73e-4c19-8470-e6d92026f3d6"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "fce5a492-7e44-490f-be5c-f0aa9281d454",
+          "collection": "/api/3/workflow_collections/1e153f3c-9061-4106-9786-cad63184a155",
+          "steps": [
+            {
+              "uuid": "7c66cd1a-7ee5-4000-8707-5ff80f6d9f3c",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "faae40ba-5d1d-4f9a-8023-6ba6c5c73150",
+              "@type": "WorkflowStep",
+              "name": "Get Vulnerabilities",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Claroty XDOME",
+                "config": "",
+                "params": {
                   "fields": {
                     "fields": [
                       "id",
@@ -1068,34 +939,68 @@
                       "epss_score"
                     ]
                   },
-                  "offset": "",
+                  "id": "",
+                  "name": "",
+                  "vulnerability_type": "",
                   "cve_ids": "",
+                  "cvss_v3_score": "",
+                  "filter_by": "",
                   "sort_by": [
                     {
                       "field": "published_date",
                       "order": "desc"
                     }
                   ],
-                  "filter_by": "",
-                  "cvss_v3_score": "",
-                  "vulnerability_type": ""
+                  "offset": "",
+                  "limit": 100
                 },
                 "version": "1.0.0",
                 "connector": "claroty-xdome",
                 "operation": "get_vulnerabilities",
                 "operationTitle": "Get Vulnerabilities"
               },
-              "status": null,
-              "top": "120",
               "left": "188",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "033ffb52-ace5-4532-9ea0-eb46eaa62165"
-            },
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the details of Vulnerabilities corresponding to the Vulnerabilities table in the Claroty XDOME dashboard.",
+          "name": "Get Vulnerabilities",
+          "tag": "#Claroty XDOME",
+          "recordTags": [
+            "Claroty",
+            "claroty-xdome"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7c66cd1a-7ee5-4000-8707-5ff80f6d9f3c",
+          "routes": [
             {
+              "uuid": "853d2f02-dcb4-473f-89f4-eebf1751596d",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Vulnerabilities",
+              "sourceStep": "/api/3/workflow_steps/7c66cd1a-7ee5-4000-8707-5ff80f6d9f3c",
+              "targetStep": "/api/3/workflow_steps/faae40ba-5d1d-4f9a-8023-6ba6c5c73150"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "98759daa-e749-4032-8e50-505cf802ec52",
+          "collection": "/api/3/workflow_collections/1e153f3c-9061-4106-9786-cad63184a155",
+          "steps": [
+            {
+              "uuid": "03b5998e-03b3-41d6-bf78-0fa2bb703e13",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
+              "status": null,
               "arguments": {
                 "step_variables": {
                   "input": {
@@ -1103,48 +1008,67 @@
                   }
                 }
               },
-              "status": null,
-              "top": "20",
               "left": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-              "group": null,
-              "uuid": "1cf62709-4c67-4dd9-a61e-19aa6f00ee30"
-            }
-          ],
-          "routes": [
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
             {
-              "@type": "WorkflowRoute",
-              "name": "Start-> Get Vulnerabilities",
-              "targetStep": "/api/3/workflow_steps/033ffb52-ace5-4532-9ea0-eb46eaa62165",
-              "sourceStep": "/api/3/workflow_steps/1cf62709-4c67-4dd9-a61e-19aa6f00ee30",
-              "label": null,
-              "isExecuted": false,
-              "group": null,
-              "uuid": "7567b5a3-3a07-43c3-8d83-ef2fdde4ba88"
+              "uuid": "437a014a-ec66-4538-a2a8-ca5d5b0182b4",
+              "@type": "WorkflowStep",
+              "name": "Execute Generic Claroty API",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Claroty XDOME",
+                "config": "",
+                "params": {
+                  "endpoint": "/api/v1/",
+                  "parameters": ""
+                },
+                "version": "1.0.0",
+                "connector": "claroty-xdome",
+                "operation": "execute_generic_claroty_api",
+                "operationTitle": "Execute Generic Claroty API"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
-          "groups": [],
-          "priority": null,
-          "uuid": "e3027165-9527-4035-88a7-300383fc55a5",
-          "id": 3022,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
+          "triggerLimit": null,
+          "description": "Execute a generic Claroty API with the specified endpoint and parameters",
+          "name": "Execute Generic Claroty API",
+          "tag": "#Claroty XDOME",
           "recordTags": [
             "Claroty",
             "claroty-xdome"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/03b5998e-03b3-41d6-bf78-0fa2bb703e13",
+          "routes": [
+            {
+              "uuid": "87d312d8-338c-4b67-adc3-c9d5bea9b64c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Execute Generic Claroty API",
+              "sourceStep": "/api/3/workflow_steps/03b5998e-03b3-41d6-bf78-0fa2bb703e13",
+              "targetStep": "/api/3/workflow_steps/437a014a-ec66-4538-a2a8-ca5d5b0182b4"
+            }
           ]
         }
+      ],
+      "name": "Sample - Claroty XDOME - 1.0.0",
+      "description": "Claroty xDome is a modular, SaaS-powered industrial cybersecurity platform that scales to protect your environment and fulfill your goals as they evolve.",
+      "visible": true,
+      "recordTags": [
+        "Claroty",
+        "claroty-xdome"
       ]
     }
-  ],
-  "exported_tags": [
-    "Claroty",
-    "claroty-xdome",
-    "dataingestion",
-    "ingest",
-    "create",
-    "fetch"
   ]
 }

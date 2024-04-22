@@ -505,7 +505,7 @@
           "description": "Specify which fields to return for each OT Event."
         },
         {
-          "title": "Filter by OT Event ID",
+          "title": "OT Event ID",
           "name": "event_id",
           "visible": true,
           "required": false,
@@ -515,7 +515,7 @@
           "description": "Specify the Event ID you want to filter OT Events. One or more Event ID can be provided in a comma separated format."
         },
         {
-          "title": "Filter by OT Event Type",
+          "title": "OT Event Type",
           "name": "event_type",
           "visible": true,
           "required": false,
@@ -525,7 +525,7 @@
           "description": "Specify the Event type you want to filter OT Events. One or more Event type can be provided in a comma separated format."
         },
         {
-          "title": "Filter by Destination Asset ID",
+          "title": "Destination Asset ID",
           "name": "dest_asset_id",
           "visible": true,
           "required": false,
@@ -535,7 +535,7 @@
           "description": "Specify the  Destination Asset ID on which you want to filter OT Events. One or more Destination Asset ID can be provided in a comma separated format."
         },
         {
-          "title": "Filter by Source Asset ID",
+          "title": "Source Asset ID",
           "name": "source_asset_id",
           "visible": true,
           "required": false,
