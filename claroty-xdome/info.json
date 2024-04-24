@@ -215,6 +215,17 @@
           "value": 100,
           "tooltip": "Specify the maximum amount of Alerts to fetch. Default value is 100. Limit can be set between 0 to 5000",
           "description": "Specify the maximum amount of Alerts to fetch. Default value is 100. Limit can be set between 0 to 5000"
+        },
+        {
+          "title": "Fetch all Alerts",
+          "name": "all_alerts",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": false,
+          "type": "checkbox",
+          "tooltip": "Specify if you want to fetch all the alerts from Claroty XDOME. Limit parameter will be ignored if this parameter is checked",
+          "description": "Specify if you want to fetch all the alerts from Claroty XDOME. Limit parameter will be ignored if this parameter is checked"
         }
       ]
     },
