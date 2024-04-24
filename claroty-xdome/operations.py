@@ -39,12 +39,10 @@ class ClarotyXDOMEConnector:
 
             response = requests.request(method, url, params=params, files=files, data=data, headers=headers,
                                         verify=self.verify_ssl)
+
             if response.ok:
                 logger.info('Successfully got response for url {}'.format(url))
-                if method.upper() == 'DELETE':
-                    return response
-                else:
-                    return response.json()
+                return response
             elif response.status_code == 400:
                 error_response = response.json()
                 error_description = error_response['detail']
@@ -100,7 +98,12 @@ def get_alerts(config: dict, params: dict):
         if len(operands_list) > 0:
             params.update({"filter_by": {"operation": "and", "operands": operands_list}})
 
-        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params))
+        if params.get('all_alerts'):
+            result = {"alerts": []}
+            result['alerts'].extend(_fetch_all_alerts(params, cx, endpoint))
+            return result
+        else:
+            return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params)).json()
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
@@ -116,7 +119,7 @@ def get_devices(config: dict, params: dict):
         if len(operands_list) > 0:
             params.update({"filter_by": {"operation": "and", "operands": operands_list}})
 
-        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params))
+        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params)).json()
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
@@ -131,7 +134,7 @@ def get_ot_events(config: dict, params: dict):
         if len(operands_list) > 0:
             params.update({"filter_by": {"operation": "and", "operands": operands_list}})
 
-        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params))
+        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params)).json()
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
@@ -146,7 +149,7 @@ def get_vulnerabilities(config: dict, params: dict):
         if len(operands_list) > 0:
             params.update({"filter_by": {"operation": "and", "operands": operands_list}})
 
-        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params))
+        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params)).json()
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
@@ -157,7 +160,7 @@ def execute_generic_claroty_api(config: dict, params: dict):
         cx = ClarotyXDOMEConnector(config)
         params = _build_payload(params)
         endpoint = params.pop('endpoint')
-        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params.get('parameters')))
+        return cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params.get('parameters'))).json()
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
@@ -235,6 +238,20 @@ def _build_payload(params: dict) -> dict:
             params.update({"filter_by": update_operands})
 
     return {key: val for key, val in params.items() if isinstance(val, (bool, int)) or val}
+
+
+def _fetch_all_alerts(params: dict, cx, endpoint: str) -> list:
+    result = []
+    res = cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params))
+    res_data = res.json()
+
+    while res.status_code == 200 and len(res_data['alerts']) != 0:
+        result.extend(res_data['alerts'])
+        params.update({"offset": params.get('offset', 0) + len(res_data['alerts'])})
+        res = cx.make_request(endpoint=endpoint, method='POST', data=json.dumps(params))
+        res_data = res.json()
+
+    return result
 
 
 operations = {

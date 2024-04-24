@@ -18,7 +18,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1713767578,
+          "lastModifyDate": 1713938054,
           "collection": "/api/3/workflow_collections/1e153f3c-9061-4106-9786-cad63184a155",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/7dc51862-7dd4-4daf-afe7-b50c161d111e",
@@ -29,7 +29,7 @@
               "description": null,
               "arguments": {
                 "category": "",
-                "alert_limit": "100",
+                "alert_limit": "",
                 "pullTimeMacro": "ClarotyXDOMELastPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}",
                 "alerts_status_map": "{'Acknowledged': {{'AlertStatus'| picklist('Investigating') }},'Resolved': {{'AlertStatus'| picklist('Closed')}},'Unresolved': {{'AlertStatus'| picklist('Open') }}}"
               },
@@ -141,6 +141,7 @@
                   ],
                   "category": "{{vars.category}}",
                   "filter_by": "",
+                  "all_alerts": "{% if vars.alert_limit != \"\" %}false{%else%}true{%endif%}",
                   "after_updated_time": "{{vars.last_pull_time}}",
                   "after_detected_time": "",
                   "before_updated_time": "",
@@ -308,7 +309,7 @@
                   "input": {
                     "params": []
                   },
-                  "_configuration_schema": "[\n   {\n      \"title\":\"Pull Alerts Created or Updated in Last X min\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"type\":\"integer\",\n      \"name\":\"fetch_alerts_in_last_X_minutes\",\n      \"tooltip\":\"Specify the timeframe in minutes to pull the alerts for the first time.\"\n   },\n   {\n      \"title\":\"Limit\",\n      \"name\":\"alert_limit\",\n      \"type\":\"integer\",\n      \"tooltip\":\"Specify the number of Alerts you want to ingest\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true\n   },\n   {\n      \"title\":\"Alert Category\",\n      \"name\":\"category\",\n      \"type\":\"text\",\n      \"tooltip\":\"Specify the Alert category you want to filter Alerts\",\n      \"required\":false,\n      \"editable\":true,\n      \"visible\":true\n   }\n]"
+                  "_configuration_schema": "[\n   {\n      \"title\":\"Pull Alerts Created or Updated in Last X min\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"type\":\"integer\",\n      \"name\":\"fetch_alerts_in_last_X_minutes\",\n      \"tooltip\":\"Specify the timeframe in minutes to pull the alerts for the first time.\"\n   },\n   {\n      \"title\":\"Alert Category\",\n      \"name\":\"category\",\n      \"type\":\"text\",\n      \"tooltip\":\"Specify the Alert category you want to filter Alerts\",\n      \"required\":false,\n      \"editable\":true,\n      \"visible\":true\n   },\n   {\n      \"title\":\"Limit\",\n      \"name\":\"alert_limit\",\n      \"type\":\"integer\",\n      \"tooltip\":\"Specify the number of Alerts you want to ingest. Maximum value can be 5000. Leave the field blank to ingest all the alerts\",\n      \"required\":false,\n      \"editable\":true,\n      \"visible\":true\n   }\n]"
                 },
                 "triggerOnSource": true,
                 "triggerOnReplicate": false
@@ -440,7 +441,7 @@
           "groups": [],
           "priority": null,
           "uuid": "5f593b61-06a6-4a99-83b9-7ce65171c04c",
-          "id": 2625,
+          "id": 2742,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
